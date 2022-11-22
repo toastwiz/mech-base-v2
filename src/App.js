@@ -1,25 +1,60 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const [isShown, setIsShown] = useState(false);
+
+
+  function handleClick()
+  {
+    setIsShown(true);
+  }
+
+  function removeClick()
+  {
+    setIsShown(false);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <body> 
+       
+          <div className = "container">
+              <nav className = "nav-bar">
+                  <ul className = "nav-list">
+                      <li className = "nav-item">
+                        <a href="">Home</a>
+                      </li>
+                      <li className = "nav-item">
+                        <a onClick = {removeClick}>Remove</a>
+                      </li>
+                      <li className = "nav-item">
+                      <   button className = "btn-primary" onClick={handleClick}>Add +</button>
+                      </li>
+
+                  </ul>
+              </nav>
+          </div>
+
+          <div className='card-container'>
+
+            
+            {isShown && <div className='card'>
+                This is a test card.
+                <input className = "text-box"></input>
+              </div>}
+
+          </div>
+  
+      </body>
     </div>
   );
 }
+
+
+
 
 export default App;
